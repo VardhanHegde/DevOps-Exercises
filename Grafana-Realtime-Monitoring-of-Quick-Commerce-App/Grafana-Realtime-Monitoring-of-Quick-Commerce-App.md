@@ -91,47 +91,13 @@ if __name__ == "__main__":
 Run the script:
 ```
 python3 delivery_metrics.py
-
-[INFO] Sleeping for 1 seconds...
-[DEBUG] Total deliveries: 69
-[DEBUG] Pending deliveries: 20
-[DEBUG] On-the-way deliveries: 17
-[DEBUG] Average delivery time: 28.26 seconds
-[INFO] Sleeping for 1 seconds...
-[DEBUG] Total deliveries: 96
-[DEBUG] Pending deliveries: 13
-[DEBUG] On-the-way deliveries: 16
-[DEBUG] Average delivery time: 41.62 sec
 ```
+
 
 Access metrics at [http://localhost:8000/metrics](http://localhost:8000/metrics).
 
 ```
 curl http://localhost:8000/metrics
-# HELP python_gc_objects_collected_total Objects collected during gc
-# TYPE python_gc_objects_collected_total counter
-python_gc_objects_collected_total{generation="0"} 242.0
-python_gc_objects_collected_total{generation="1"} 18.0
-python_gc_objects_collected_total{generation="2"} 0.0
-# HELP python_gc_objects_uncollectable_total Uncollectable objects found during GC
-# TYPE python_gc_objects_uncollectable_total counter
-python_gc_objects_uncollectable_total{generation="0"} 0.0
-python_gc_objects_uncollectable_total{generation="1"} 0.0
-python_gc_objects_uncollectable_total{generation="2"} 0.0
-# HELP python_gc_collections_total Number of times this generation was collected
-# TYPE python_gc_collections_total counter
-python_gc_collections_total{generation="0"} 33.0
-python_gc_collections_total{generation="1"} 2.0
-python_gc_collections_total{generation="2"} 0.0
-# HELP python_info Python platform information
-# TYPE python_info gauge
-python_info{implementation="CPython",major="3",minor="12",patchlevel="3",version="3.12.3"} 1.0
-# HELP process_virtual_memory_bytes Virtual memory size in bytes.
-# TYPE process_virtual_memory_bytes gauge
-process_virtual_memory_bytes 1.81510144e+08
-# HELP process_resident_memory_bytes Resident memory size in bytes.
-# TYPE process_resident_memory_bytes gauge
-process_resident_memory_bytes 2.3887872e+07
 ```
 
 ---
@@ -208,7 +174,7 @@ groups:
    
 Run Prometheus:
 ```
-docker run -d --name prometheus --network=host -v ./prometheus.yml:/etc/prometheus/prometheus.yml -v ./alert_rules.yml:/etc/prometheus/alert_rules.yml  prom/prometheus
+docker run -d --name prometheus --network=host -v ./prometheus.yml:/etc/prometheus/prometheus.yml -v ./alert_rules.yml:/etc/prometheus/alerts_rules.yml  prom/prometheus
 ```
 
 Output
